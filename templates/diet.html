@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Diet Recommendation - SmartCare</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/diet.css') }}" />
+</head>
+<body class="page-with-nav" data-require-login="true">
+	<header class="header">
+		<a href="/" class="logo">
+			<span class="smart">Smart</span><span class="care">Care</span>
+		</a>
+		<nav class="navbars">
+			<span id="userWelcome" class="user-welcome"></span>
+			<a href="/">Home</a>
+			<a href="/about">About Us</a>
+			<a href="/diet">Diet Recommendation</a>
+			<a href="/chatbot">Health Assistant</a>
+			<span id="authButtons"></span>
+		</nav>
+	</header>
+
+	<main class="container panel">
+		<header>
+			<h1>Diet Recommendation</h1>
+			<p>Enter your details and choose a goal to get a personalized diet plan.</p>
+		</header>
+
+		<form id="dietForm" class="form">
+			<div class="row">
+				<label>Name <input type="text" id="name" placeholder="Your name" required /></label>
+				<label>Age <input type="number" id="age" min="5" max="120" required /></label>
+			</div>
+
+			<div class="row">
+				<label>Height (cm) <input type="number" id="height" min="50" max="300" required /></label>
+				<label>Weight (kg) <input type="number" id="weight" min="20" max="500" step="0.1" required /></label>
+			</div>
+
+			<div class="row">
+				<label>BMI <input type="number" id="bmi" step="0.1" placeholder="Auto-calculated" /></label>
+				<label>Goal
+					<select id="goal" placeholder="Select your goal">
+						<option value="weightloss">Weight Loss</option>
+						<option value="weightgain">Weight Gain</option>
+						<option value="fatloss">Fat Loss</option>
+						<option value="musclebuild">Muscle Build</option>
+						<option value="healthydiet">Healthy Diet</option>
+					</select>
+				</label>
+				<label>Diet Preference
+					<select id="dietType" name="dietType">
+						<option value="veg">Vegetarian</option>
+						<option value="nonveg">Non-Vegetarian</option>
+					</select>
+				</label>
+				<label>Allergics
+					<select id="allergics" name="allergics">
+						<option value="none">None</option>
+						<option value="diabetes">Diabetes</option>
+						<option value="lactose">Lactose</option>
+						<option value="soya">Soya</option>
+						<option value="peanuts">Peanuts</option>
+					</select>
+				</label>
+			</div>
+
+			<div class="actions">
+				<label style="display:block;margin-bottom:8px;" id="useAIlabel"><input type="checkbox" id="useAI"> <span id="useAItext">Use AI recommendation (checking this requires a trained model)</span></label>
+				<button type="submit">Get Recommendation</button>
+				<button type="button" id="resetBtn" class="secondary">Reset</button>
+			</div>
+		</form>
+
+		<section id="result" class="result" aria-live="polite"></section>
+
+		<div class="back-home-wrap">
+			<a href="/" class="back-home-btn">Back to Home Page</a>
+		</div>
+
+		<footer class="note">
+			<p>Note: This is a simple recommendation generator. For personalized medical or clinical advice consult a professional.</p>
+		</footer>
+	</main>
+
+	<script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/diet.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+/* :root {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #1f2937;
+    background: linear-gradient(135deg, #e0f7fa, #d1f1ff);
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #e6f2f8;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+header h1 {
+    margin-bottom: 6px;
+    font-size: 2rem;
+    text-align: center;
+    color: #2a9d8f;
+}
+
+header p {
+    margin-bottom: 24px;
+    color: #4b5563;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Form */
+.form {
+    display: grid;
+    gap: 16px;
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+}
+
+.row label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+input,
+select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-top: 6px;
+    font-size: 1rem;
+    background: #1b232c;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #2a9d8f;
+    box-shadow: 0 0 8px rgba(42, 157, 143, 0.25);
+    outline: none;
+}
+
+/* Action buttons */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+button {
+    background: #2a9d8f;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #21867a;
+    transform: translateY(-2px);
+}
+
+button.secondary {
+    background: #e0f2f1;
+    color: #1f2937;
+}
+
+button.secondary:hover {
+    background: #c0e7df;
+}
+
+/* Result section */
+.result {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #fefefe, #f0fdf4);
+    border: 1px solid #d1fae5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.result h2 {
+    margin-bottom: 10px;
+    color: #2a9d8f;
+}
+
+.result .meta {
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+.plan {
+    margin-top: 12px;
+}
+
+.plan ul {
+    margin-top: 8px;
+    margin-left: 20px;
+    color: #111827;
+}
+
+/* Notes */
+.note {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #555;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+/* Meal note */
+.meal-note {
+    margin-top: 12px;
+    font-size: 1.2rem;
+    color: #5db639;
+    font-weight: 600;
+}
+
+/* Back to Home button */
+.back-home-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #2a9d8f;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background-color: #21867a;
+    transform: translateY(-2px);
+}
+
+:root {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #1f2937;
+    background: linear-gradient(135deg, #e0f7fa, #d1f1ff);
+    padding: 0;
+    margin: 0;
+}

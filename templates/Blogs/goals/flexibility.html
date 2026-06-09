@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexibility & Mobility - SmartCare</title>
+    <style>
+        /* Copy the same style from fat.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+#root {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0px;
+    top: 0;
+}
+
+/* Services Banner */
+.services-banner {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0px;
+    background: #000000;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    
+}
+
+.services-banner h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.services-banner p {
+    font-size: 1.3rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* Services Container */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.service-item {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border: 1px solid #e5e5e5;
+}
+
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+    border-color: #0a0a0a;
+}
+
+.service-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover img {
+    transform: scale(1.05);
+}
+
+.service-item h3 {
+    padding: 25px 25px 10px;
+    font-size: 1.6rem;
+    color: #0a0a0a;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.service-item p {
+    padding: 0 25px 30px;
+    color: #666;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Benefits Section */
+.benefits {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 60px 50px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.benefits h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #0a0a0a;
+    letter-spacing: -1px;
+}
+
+.benefits h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #0a0a0a;
+    margin: 20px auto 0;
+}
+
+.benefits-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    
+}
+
+.benefits-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 30px;
+    text-align: justify;
+    font-weight: 400;
+}
+
+.exercise-types {
+    background: #f8f8f8;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 4px solid #0a0a0a;
+}
+
+.exercise-types ul {
+    list-style: none;
+}
+
+.exercise-types li {
+    padding: 10px 0 10px 30px;
+    font-size: 1.05rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.exercise-types li::before {
+    content: '*';
+    position: absolute;
+    left: 0;
+    color: #0a0a0a;
+    font-size: 1.2rem;
+}
+
+.exercise-types li:hover {
+    transform: translateX(5px);
+    color: #000;
+}
+
+.benefits-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.benefits-img img:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .services-banner h2 {
+        font-size: 2.5rem;
+    }
+    
+    .services-banner p {
+        font-size: 1.1rem;
+    }
+    
+    .benefits-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .benefits h2 {
+        font-size: 2.2rem;
+    }
+    
+    .benefits {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-banner {
+        padding: 60px 20px;
+    }
+    
+    .services-banner h2 {
+        font-size: 2rem;
+    }
+    
+    .services-banner p {
+        font-size: 1rem;
+    }
+    
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .service-item h3 {
+        font-size: 1.4rem;
+    }
+    
+    .benefits h2 {
+        font-size: 1.8rem;
+    }
+    
+    .benefits {
+        padding: 40px 20px;
+    }
+    
+    .benefits-text p {
+        font-size: 1rem;
+    }
+    
+    .exercise-types li {
+        font-size: 1rem;
+    }
+}
+        /* ...rest of the styles from fat.html... */
+    </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}">
+</head>
+<body class="page-with-nav">
+<header class="header">
+  <a href="/" class="logo"><span class="smart">Smart</span><span class="care">Care</span></a>
+  <nav class="navbars">
+    <span id="userWelcome" class="user-welcome"></span>
+    <a href="/">Home</a>
+    <a href="/about">About Us</a>
+    <a href="/diet">Diet Recommendation</a>
+    <a href="/chatbot">Health Assistant</a>
+    <span id="authButtons"></span>
+  </nav>
+</header>
+    <div id="root">
+        <section class="services-banner">
+            <h2>Flexibility & Mobility Training</h2>
+            <p>"Move better, feel better, live better."</p>
+        </section>
+        
+        <div class="services-container">
+            <div class="service-item">
+                <img src="../../../static/images/DynamicTraining.jpg" alt="Dynamic Stretching">
+                <h3>Dynamic Stretching</h3>
+                <p>"Improves range of motion and prepares muscles for activity."</p>
+            </div>
+            <div class="service-item">
+                <img src="../../../static/images/Yogapose.webp" alt="Yoga Poses">
+                <h3>Yoga Poses</h3>
+                <p>"Enhances flexibility while promoting mental and physical balance."</p>
+            </div>
+            <div class="service-item">
+                <img src="../../../static/images/mobility.jpg" alt="Mobility Work">
+                <h3>Mobility Training</h3>
+                <p>"Targets joint health and functional movement patterns."</p>
+            </div>
+        </div>
+        
+        <section class="benefits">
+            <h2>Benefits of Flexibility Training</h2>
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <p>Regular flexibility and mobility training is essential for maintaining healthy joints, preventing injuries, and improving overall movement quality. This program combines dynamic stretching, yoga poses, and targeted mobility work to enhance your body's range of motion and functionality.</p>
+                    <div class="exercise-types">
+                        <ul>
+                            <li>Improved Joint Range of Motion</li>
+                            <li>Better Posture</li>
+                            <li>Reduced Muscle Tension</li>
+                            <li>Enhanced Athletic Performance</li>
+                            <li>Injury Prevention</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button onclick="location.href='/'" style="padding: 10px 20px; margin-top: 20px; cursor: pointer;">Back to Home</button>
+        </section>
+    </div>
+  <script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+

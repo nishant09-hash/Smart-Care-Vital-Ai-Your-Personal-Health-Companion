@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h2>Test Registration</h2>
+    <button onclick="testRegister()">Test Register</button>
+    
+    <h2>Test Login</h2>
+    <button onclick="testLogin()">Test Login</button>
+
+    <script>
+        async function testRegister() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: 'testuser',
+                        email: 'test@test.com',
+                        password: 'test123'
+                    })
+                });
+                const data = await response.json();
+                alert(JSON.stringify(data));
+            } catch (error) {
+                alert('Error: ' + error);
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'test@test.com',
+                        password: 'test123'
+                    })
+                });
+                const data = await response.json();
+                alert(JSON.stringify(data));
+            } catch (error) {
+                alert('Error: ' + error);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Required packages for training the Decision Tree model
+pandas
+scikit-learn
+numpy
+xlrd
+

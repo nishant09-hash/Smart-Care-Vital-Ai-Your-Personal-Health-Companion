@@ -1,0 +1,154 @@
+Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f9f9f9, #eef8ff);
+  color: #333;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+/* Header */
+.blog-header {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.blog-header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-header p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Blog Content */
+.blog-content {
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.blog-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.intro {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Tips section with flexbox */
+.about-b1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.tips-text {
+  flex: 1 1 350px;
+}
+
+.tips-text ol {
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tips-text ol li {
+  margin: 0.7rem 0;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+/* Illustration Box */
+.img {
+  flex: 1 1 350px;
+  max-width: 40rem;
+  height: 25rem;
+  background: url("newimage.png") center/cover no-repeat;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+.blog-footer {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-b1 {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .img {
+    width: 100%;
+    height: 18rem;
+  }
+
+  .blog-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .blog-content {
+    padding: 1.5rem;
+  }
+}
+
+.blog-content p {
+  font-size: 1.15rem;         /* slightly bigger for readability */
+  line-height: 1.9;           /* more spacing between lines */
+  margin-bottom: 1.5rem;      /* breathing space */
+  color: #444;                /* soft dark gray */
+  font-weight: 400;           /* clean normal weight */
+}
+
+/* highlight important paragraphs */
+.blog-content p:first-of-type {
+  font-weight: 600;           /* bold for emphasis */
+  color: #222;                /* darker for impact */
+}
+
+.blog-content p:last-of-type {
+  font-weight: 500;
+  color: #2a6f97;             /* a calming blue for motivation */
+}

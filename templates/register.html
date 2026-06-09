@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register - SmartCare</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}">
+
+  <style>
+    body { font-family: Arial, sans-serif; padding:130px 24px 24px; background:#f5f6fb; color:#111; }
+    .card { max-width:520px; margin:48px auto; background:#fff; padding:22px; border-radius:12px; box-shadow:0 8px 30px rgba(11,14,30,0.06); }
+    label{display:block;margin-top:12px;font-weight:600;color:#374151}
+    input{width:100%;padding:10px;margin-top:6px;border:1px solid #e6e9ef;border-radius:8px;}
+    button{margin-top:16px;padding:10px 14px;border:0;background:#1f7bd6;color:#fff;border-radius:8px;cursor:pointer}
+    .msg{margin-top:12px;padding:10px;border-radius:8px;display:none}
+    .msg.error{background:#fff1f2;color:#991b1b;border:1px solid rgba(239,68,68,0.12)}
+    .msg.ok{background:#ecfdf5;color:#065f46;border:1px solid rgba(16,185,129,0.12)}
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a href="/" class="logo">
+      <span class="smart">Smart</span><span class="care">Care</span>
+    </a>
+    <nav class="navbars">
+      <span id="userWelcome" class="user-welcome"></span>
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/diet">Diet Recommendation</a>
+      <a href="/chatbot">Health Assistant</a>
+      <span id="authButtons"></span>
+    </nav>
+  </header>
+  <div class="card">
+    <h2>Create an account</h2>
+
+    <form id="registerForm" autocomplete="off">
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" required />
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required minlength="6" />
+
+      <label for="confirm">Confirm password</label>
+      <input id="confirm" name="confirm" type="password" required minlength="6" />
+
+      <button type="submit">Register</button>
+
+      <div id="message" class="msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      const DEFAULT_TIMEOUT = 10000;
+      const form = document.getElementById('registerForm');
+      const msg = document.getElementById('message');
+
+      function showMessage(text, ok = false) {
+        msg.textContent = text;
+        msg.className = 'msg ' + (ok ? 'ok' : 'error');
+        msg.style.display = 'block';
+      }
+
+      function clearMessage() {
+        msg.style.display = 'none';
+        msg.textContent = '';
+      }
+
+      function getApiUrl() {
+        if (window.location.protocol === 'file:') {
+          return 'http://127.0.0.1:5000/api/register';
+        }
+        return '/api/register';
+      }
+
+      function fetchWithTimeout(url, options = {}, timeout = DEFAULT_TIMEOUT) {
+        return Promise.race([
+          fetch(url, options),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), timeout))
+        ]);
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearMessage();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirm = document.getElementById('confirm').value;
+
+        if (!name || !email || !password) {
+          showMessage('Please fill all required fields.');
+          return;
+        }
+
+        if (password !== confirm) {
+          showMessage('Passwords do not match.');
+          return;
+        }
+
+        if (password.length < 6) {
+          showMessage('Password must be at least 6 characters.');
+          return;
+        }
+
+        const payload = { name, email, password };
+        const API_REGISTER = getApiUrl();
+
+        try {
+          const res = await fetchWithTimeout(API_REGISTER, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            mode: 'cors'
+          }, DEFAULT_TIMEOUT);
+
+          let data = null;
+          let rawText = null;
+          try {
+            rawText = await res.text();
+            data = JSON.parse(rawText);
+          } catch (parseErr) {
+            rawText = rawText || null;
+          }
+
+          if (!res.ok) {
+            const serverMsg = data && (data.message || data.error) ? (data.message || data.error) : (rawText || `Server returned ${res.status}`);
+            showMessage(`Registration failed: ${serverMsg}`);
+            console.error('Register failed', res.status, rawText, data);
+            return;
+          }
+
+          const successMsg = data && data.message ? data.message : 'Account created successfully. Redirecting to login...';
+          showMessage(successMsg, true);
+          
+          // Redirect to login page after 1.5 seconds
+          setTimeout(() => {
+            window.location.href = '/login';
+          }, 1500);
+
+        } catch (err) {
+          console.error('Network/register error:', err);
+          if (err.message === 'timeout') {
+            showMessage('Connection timed out. Is the backend running and reachable?');
+          } else {
+            showMessage('Connection failed. Please check that your Flask server is running.');
+          }
+        }
+      });
+    })();
+  </script>
+  <script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+</body>
+</html>

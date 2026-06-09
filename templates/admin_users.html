@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}">
+    <title>Admin - Registered Users</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at top right, #3a2f29, #1f1f1f 45%, #101010 75%);
+            color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 24px auto 32px;
+            padding: 0 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .panel-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #f8fafc;
+        }
+
+        .meta {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 107, 44, 0.6);
+            color: #f8fafc;
+            background: rgba(255, 107, 44, 0.15);
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 107, 44, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .card {
+            background: rgba(18, 18, 18, 0.92);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 760px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            vertical-align: top;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2a2a2a 0%, #141414 100%);
+            color: #f8fafc;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .empty {
+            padding: 18px;
+            color: #cbd5e1;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            background: rgba(255, 255, 255, 0.12);
+            color: #f8fafc;
+        }
+
+        .email {
+            word-break: break-word;
+        }
+
+        @media (max-width: 768px) {
+            .panel-header h1 {
+                font-size: 1.45rem;
+            }
+        }
+    </style>
+</head>
+<body class="page-with-nav">
+    <header class="header">
+        <a href="/" class="logo">
+            <span class="smart">Smart</span><span class="care">Care</span>
+        </a>
+        <nav class="navbars">
+            <a href="/">Home</a>
+            <a href="/chatbot">Health Assistant</a>
+            <a href="/admin/messages">Contact Entries</a>
+            <a href="/admin/users">User Entries</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="panel-header">
+            <h1>Registered Users</h1>
+            <span class="meta">Route: /admin/users</span>
+            <div class="actions">
+                <a class="link-btn" href="/admin/messages">View Contact Messages</a>
+                <a class="link-btn" href="/">Go Home</a>
+            </div>
+        </div>
+
+        <div class="card table-wrap">
+            {% if users and users|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Registered At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td><span class="pill">#{{ user.user_id }}</span></td>
+                        <td>{{ user.name }}</td>
+                        <td class="email">{{ user.email }}</td>
+                        <td>{{ user.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="empty">No users found in users table.</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

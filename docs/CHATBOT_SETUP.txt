@@ -1,0 +1,40 @@
+# Chatbot Setup Instructions
+
+## Getting Your Gemini API Key
+
+1. Go to https://makersuite.google.com/app/apikey or https://aistudio.google.com/apikey
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy the generated API key
+
+## Setting Up the Environment
+
+1. Create a `.env` file in the project root directory (d:\SmartCare_Final)
+2. Add your API key to the `.env` file:
+   ```
+   GEMINI_API_KEY=your_actual_api_key_here
+   ```
+3. Save the file
+
+## Running the Application
+
+1. Make sure all dependencies are installed:
+   ```
+   pip install google-genai python-dotenv
+   ```
+
+2. Run the Flask application:
+   ```
+   python app.py
+   ```
+
+3. Navigate to http://127.0.0.1:5000
+4. Login to your account
+5. Click "Health Assistant" in the navigation menu
+6. Start chatting!
+
+## Notes
+
+- Users must be logged in to use the chatbot
+- The chatbot only responds to health and diet-related questions
+- If asked about other topics, it will politely refuse and redirect to health topics

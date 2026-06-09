@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SmartCare</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}">
+
+  <!-- ====== STYLES (UNCHANGED) ====== -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 130px 20px 20px;
+    }
+
+    .login-container {
+      max-width: 460px;
+      width: 100%;
+      background: #fff;
+      border-radius: 24px;
+      padding: 50px 45px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    }
+
+    .logo { text-align: center; margin-bottom: 30px; }
+    .logo h1 { font-size: 32px; color: #1e3c72; }
+    .logo p { color: #6b7280; font-size: 14px; }
+
+    h2 { text-align: center; margin-bottom: 30px; color: #1f2937; }
+
+    .form-group { margin-bottom: 20px; }
+    label { display:block; margin-bottom:8px; font-weight:600; }
+    input {
+      width:100%; padding:14px;
+      border:2px solid #e5e7eb;
+      border-radius:12px;
+      font-size:15px;
+    }
+
+    button {
+      width:100%; padding:15px;
+      background:#1e3c72; color:#fff;
+      border:none; border-radius:12px;
+      font-weight:700; cursor:pointer;
+      margin-top:10px;
+    }
+
+    #message {
+      display:none;
+      margin-top:15px;
+      padding:10px;
+      border-radius:8px;
+      font-weight:600;
+    }
+
+    .register-link {
+      text-align:center;
+      margin-top:25px;
+      color:#6b7280;
+    }
+
+    .register-link a {
+      color:#2a5298;
+      font-weight:700;
+      text-decoration:none;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a href="/" class="logo">
+      <span class="smart">Smart</span><span class="care">Care</span>
+    </a>
+    <nav class="navbars">
+      <span id="userWelcome" class="user-welcome"></span>
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/diet">Diet Recommendation</a>
+      <a href="/chatbot">Health Assistant</a>
+      <span id="authButtons"></span>
+    </nav>
+  </header>
+
+  <div class="login-container">
+    <div class="logo">
+      <h1>SmartCare</h1>
+      <p>Healthcare Management System</p>
+    </div>
+
+    <h2>Welcome Back</h2>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" required placeholder="Enter email">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" required placeholder="Enter password">
+      </div>
+
+      <button type="submit">LOGIN</button>
+
+      <div id="message"></div>
+
+      <div class="register-link">
+        Don’t have an account? <a href="/register">Create Account</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- ====== SCRIPT (CLEAN & WORKING) ====== -->
+  <script>
+    (function () {
+      const API_LOGIN = '/api/login';
+      const form = document.getElementById('loginForm');
+      const msg = document.getElementById('message');
+
+      function showMessage(text, ok = false) {
+        msg.textContent = text;
+        msg.style.display = 'block';
+        msg.style.background = ok ? '#ecfdf5' : '#fff1f2';
+        msg.style.color = ok ? '#065f46' : '#991b1b';
+        msg.style.border = '1px solid #ddd';
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.style.display = 'none';
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (!email || !password) {
+          showMessage('Please fill in all fields');
+          return;
+        }
+
+        try {
+          const res = await fetch(API_LOGIN, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            showMessage(data.error || data.message || 'Login failed');
+            return;
+          }
+
+          // Store user data
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userName', data.userName || email);
+
+          showMessage('Login successful. Redirecting...', true);
+
+          // Redirect to main page
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 700);
+
+        } catch (err) {
+          showMessage('Server not reachable. Is Flask running?');
+          console.error('Login error:', err);
+        }
+      });
+    })();
+  </script>
+
+  <script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+
+
+</body>
+</html>

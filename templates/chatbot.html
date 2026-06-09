@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}">
+    <title>Health Assistant - SmartCare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+</head>
+<body class="page-with-nav" data-require-login="true">
+    <header class="header">
+        <a href="/" class="logo">
+            <span class="smart">Smart</span><span class="care">Care</span>
+        </a>
+        <nav class="navbars">
+            <span id="userWelcome" class="user-welcome"></span>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/diet">Diet Recommendation</a>
+            <a href="/chatbot">Health Assistant</a>
+            <span id="authButtons"></span>
+        </nav>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div>
+                    <h1>🩺 Health & Diet Assistant</h1>
+                    <p>Ask me anything about health, nutrition, fitness, and wellness!</p>
+                </div>
+                <button onclick="clearChat()" class="clear-chat-btn" title="Clear conversation">
+                    🗑️ Clear Chat
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <p>Hello! 👋 I'm your SmartCare health assistant. I'm here to help you with:</p>
+                    <ul>
+                        <li>Diet and nutrition advice</li>
+                        <li>Fitness and exercise tips</li>
+                        <li>Healthy eating habits</li>
+                        <li>Weight management guidance</li>
+                        <li>General wellness information</li>
+                    </ul>
+                    <p>How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <input 
+                type="text" 
+                id="chatInput" 
+                placeholder="Ask about diet, nutrition, fitness..."
+                autocomplete="off"
+            >
+            <button id="sendBtn" onclick="sendMessage()">
+                <span>Send</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Blogs - SmartCare</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}" />
+  <style>
+    body {
+      background: radial-gradient(circle at top right, #3a2f29, #1f1f1f 40%, #101010 75%);
+      color: #f8fafc;
+    }
+
+    .blog-index {
+      max-width: 1100px;
+      margin: 28px auto 40px;
+      padding: 24px;
+      background: rgba(17, 17, 17, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .blog-index h1 {
+      margin: 0;
+      color: #ffd07d;
+      font-size: 2rem;
+    }
+
+    .blog-index p {
+      color: #cbd5e1;
+      margin: 10px 0 20px;
+    }
+
+    .blog-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .blog-links a {
+      text-decoration: none;
+      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .blog-links a:hover {
+      background: rgba(255, 154, 61, 0.2);
+      border-color: rgba(255, 154, 61, 0.5);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="page-with-nav">
+  <header class="header">
+    <a href="/" class="logo">
+      <span class="smart">Smart</span><span class="care">Care</span>
+    </a>
+    <nav class="navbars">
+      <span id="userWelcome" class="user-welcome"></span>
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/diet">Diet Recommendation</a>
+      <a href="/chatbot">Health Assistant</a>
+      <span id="authButtons"></span>
+    </nav>
+  </header>
+
+  <main class="blog-index">
+    <h1>Health Blog Library</h1>
+    <p>Explore curated fitness, nutrition, and wellness articles from SmartCare experts.</p>
+    <section class="blog-links">
+      <a href="/blogs/blog1">Blog 1: Fitness Tips for Beginners</a>
+      <a href="/blogs/blog2">Blog 2: Healthy Eating Habits</a>
+      <a href="/blogs/blog3">Blog 3: Mindfulness and Stress Relief</a>
+      <a href="/blogs/blog4">Blog 4: Workout Splits for Growth</a>
+      <a href="/blogs/blog5">Blog 5: Hydration and Health</a>
+      <a href="/blogs/blog6">Blog 6: Yoga for Flexibility</a>
+      <a href="/blogs/blog7">Blog 7: Sleep and Recovery</a>
+      <a href="/blogs/blog8">Blog 8: Cardio Myths and Benefits</a>
+      <a href="/blogs/blog9">Blog 9: 10-Minute Morning Stretches</a>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+</body>
+</html>

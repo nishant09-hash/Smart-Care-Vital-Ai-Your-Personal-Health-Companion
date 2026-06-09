@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<title>Smart Care</title>
+</head>
+<!-- MAIN PAGE -->
+<body class="page-with-nav">
+  <header class="header">
+    <a href="#" class="logo">
+      <span class="smart" style="font-size: 2rem; font-weight: bold">Smart</span>
+      <span class="care" style="font-size: 2rem; font-weight: bold">Care</span>
+    </a>
+
+    <nav class="navbars">
+		  <span id="userWelcome" class="user-welcome"></span>
+      <a href="/">Home</a>
+      <a href="#features">Goals</a>
+      <a href="/about">About Us</a>
+      <a href="/diet">Diet Recommendation</a>
+      <a href="/chatbot">Health Assistant</a>
+      <a href="#bmii">Bmi Calculator</a>
+      <a href="#health-blogs">Health Blogs</a>
+      <span id="authButtons"></span>
+    </nav>
+  </header>
+    <!-- <div class="navbar">
+        <div class="logo">
+        <a style="color: yellow;">Smart</a>
+        <br>
+        <a class="care">Care</a>
+        </div>
+        
+        <a href="#">Home</a>
+        <a href="goals">Goals</a>
+        <a href="#">Exercise</a>
+        <a href="#">Contact</a>
+        <a href="#">Bmi Calculator</a>
+    </div> -->
+    <!-- heroic section -->
+     <!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Your Personal Smart 
+        <br>Health Companion</h1>
+    <p>     Track, manage, and improve your health with AI-powered insights.</p>
+    <div class="hero-buttons">
+      <!-- <button class="start-btn">Start Now</button>
+      <button class="learn-btn">Learn More</button> -->
+    </div>
+  </div>
+</section>
+<!-- Features Section -->
+<section class="features" id="features">
+  <div class="features-header">
+    <h2>Goals</h2>
+    <p>Everything you need for smarter healthcare, in one place.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <i class="fas fa-brain"></i>
+      <h3>Fat Burning 🔥</h3>
+      <p>This program is suitable for You who wants to get rid of your fat and lose thier weight.</p>
+      <button class="learn-btn" onclick="location.href='/goals/fat'">Learn More</button>
+    </div>
+
+    <div class="feature-card">
+      <i class="fas fa-calendar-check"></i>
+      <h3>Cardio 🏃‍♂️❤️ (running + heart)</h3>
+      <p>Cardio Training improves heart Health,stamina, and overall endurances of body.</p>
+      <button class="learn-btn" onclick="location.href='/goals/cardio'">Learn More</button>
+    </div>
+
+    <div class="feature-card">
+      <i class="fas fa-robot"></i>
+      <h3>Weight Training 🏋️</h3>
+      <p>This Training for Who wants Muscular Shape of thier Body.</p>
+      <button class="learn-btn" onclick="location.href='/goals/weight'">Learn More</button>
+    </div>
+
+    <div class="feature-card">
+      <i class="fas fa-chart-line"></i>
+      <h3>Yoga 🧘‍♀️</h3>
+      <p>Yoga promotes balance, strength, flexibility and inner peace.</p>
+      <button class="learn-btn" onclick="location.href='/goals/yoga'">Learn More</button>
+    </div>
+
+    <div class="feature-card">
+      <i class="fas fa-pills"></i>
+      <h3>WeightLoss ⚖️</h3>
+      <p>Stay on track with medicine, diet, and hydration reminders.</p>
+      <button class="learn-btn" onclick="location.href='/goals/weightloss'">Learn More</button>
+    </div>
+
+    <div class="feature-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Flexibility & Mobility 🤸</h3>
+      <p>"Enhance posture, reduce stiffness, and move freely with targeted stretches".</p>
+      <button class="learn-btn" onclick="location.href='/goals/flexibility'">Learn More</button>
+    </div>
+  </div>
+</section>
+<!-- BMI Calculator Section -->
+<section class="bmi" id="bmii">
+  <div class="bmiful">
+  <div class="bmi-container">
+    <h2 style="color: #ff416c;"> <span  style="color: #ff416c;">BMI</span> CALCULATOR</h2>
+    
+    <p>Check your Body Mass Index to understand your health status.</p>
+
+    <div class="bmi-card">
+      <label for="height">Height (cm)</label>
+      <input type="number" id="height" placeholder="Enter height in cm">
+
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" placeholder="Enter weight in kg">
+
+      <button onclick="calculateBMI()">Calculate BMI</button>
+
+      <div id="result" ></div>
+    </div>
+    
+  </div>
+ 
+   <div class="bmi-table">
+    <h2 style="color: #ff416c;">BMI WEIGHT STATUS</h2>
+    <p>Check your Body Mass Index to understand your health status.</p>
+    <table class="wstatus">
+      <thead>
+        <tr>
+          <th>BMI</th>
+          <th>WEIGHT STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Below 18.5</td>
+          <td>Underweight</td>
+        </tr>
+        <tr>
+          <td>18.5 – 24.9</td>
+          <td>Healthy</td>
+        </tr>
+        <tr>
+          <td>25.0 – 29.9</td>
+          <td>Overweight</td>
+        </tr>
+        <tr>
+          <td>30.0 and Above</td>
+          <td>Obese</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</section>
+<div class="whatbmi">
+  <h2>What is <span style="text-decoration: slategray;">BMI?</span></h2>
+  <pre>"Body Mass Index (BMI) is a Calculation Based on Height and Weight that helps 
+    identify Whether a person is underweight, healthy, overweight, 
+    or obese. While it doesn’t directly measure body fat, it is a 
+    simple and widely used indicator of overall health."</p>
+</div>
+<!-- ================= Health Blogs Section ================= -->
+<section id="health-blogs" class="blogs-section">
+  <div class="container">
+    <h2 class="section-title">🩺 Health Blogs</h2>
+    <p class="section-subtitle">Stay informed with the latest fitness, nutrition, and wellness insights powered by AI.</p>
+
+    <div class="blogs-grid">
+      <!-- Blog 1 -->
+       
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?fitness,gym" alt="Fitness Blog"> -->
+        <div class="blog-content">
+          <h3>Top 5 Fitness Tips for Beginners</h3>
+          <p>Kickstart your fitness journey with easy-to-follow workout tips designed for all levels.</p>
+          <div class="blog-footer">
+            <span>👤 Dr. Mehta</span><span>📅 Sept 9, 2025</span>
+          </div>
+          <!-- <button class="read-btn" href="blog1.html">Read More →</button> -->
+           <button class="read-btn" onclick="location.href='/blogs/blog1'">  Read More → </button>
+
+          
+        </div>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?healthy-food,nutrition" alt="Nutrition Blog"> -->
+        <div class="blog-content">
+          <h3>Healthy Eating Habits for a Better Life</h3>
+          <p>Discover simple diet changes that can make a big difference to your long-term health.</p>
+          <div class="blog-footer">
+            <span>👤 Nutritionist Sharma</span><span>📅 Sept 7, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog2'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?mental-health,meditation" alt="Mindfulness Blog"> -->
+        <div class="blog-content">
+          <h3>Mindfulness & Stress Relief</h3>
+          <p>Learn practical mindfulness techniques to reduce stress and boost your mental health.</p>
+          <div class="blog-footer">
+            <span>👤 Dr. Gupta</span><span>📅 Sept 5, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog3'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog 4 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?workout,training" alt="Workout Blog"> -->
+        <div class="blog-content">
+          <h3>Best Workout Splits for Muscle Growth</h3>
+          <p>Explore effective workout splits tailored to your fitness goals and recovery needs.</p>
+          <div class="blog-footer">
+            <span>👤 Coach Rahul</span><span>📅 Sept 3, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog4'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog 5 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?water,hydration" alt="Hydration Blog"> -->
+        <div class="blog-content">
+          <h3>Why Hydration is Key for Good Health</h3>
+          <p>Understand how proper hydration improves energy, digestion, and overall wellness.</p>
+          <div class="blog-footer">
+            <span>👤 Dr. Singh</span><span>📅 Sept 1, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog5'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog 6 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?yoga,wellness" alt="Yoga Blog"> -->
+        <div class="blog-content">
+          <h3>Yoga for Flexibility & Relaxation</h3>
+          <p>Boost flexibility, reduce stress, and achieve inner peace with daily yoga practice.</p>
+          <div class="blog-footer">
+            <span>👤 Instructor Kavya</span><span>📅 Aug 30, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog6'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog 7 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?sleep,rest" alt="Sleep Blog"> -->
+        <div class="blog-content">
+          <h3>Importance of Sleep for Recovery</h3>
+          <p>Learn how sleep affects muscle recovery, brain function, and long-term health.</p>
+          <div class="blog-footer">
+            <span>👤 Dr. Ramesh</span><span>📅 Aug 28, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog7'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog 8 -->
+      <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?running,cardio" alt="Cardio Blog"> -->
+        <div class="blog-content">
+          <h3>Cardio Training: Benefits & Myths</h3>
+          <p>Discover the truth about cardio workouts and how they improve heart and lung health.</p>
+          <div class="blog-footer">
+            <span>👤 Coach Anita</span><span>📅 Aug 25, 2025</span>
+          </div>
+          <button class="read-btn" onclick="location.href='/blogs/blog8'">Read More →</button>
+        </div>
+      </div>
+
+      <!-- Blog9 -->
+       <div class="blog-card">
+        <!-- <img src="https://source.unsplash.com/400x250/?running,cardio" alt="Cardio Blog"> -->
+        <div class="blog-content">
+        <h3>10-Minute Morning Stretches to Boost Your Energy</h3>
+        <p>Start your day with simple stretches that enhance flexibility and wake up your body.</p>
+        <div class="blog-footer">
+          <span>👤 Coach Vikram</span><span>📅 Aug 20, 2025</span>
+       </div>
+         <button class="read-btn" onclick="location.href='/blogs/blog9'">Read More →</button>
+       </div>
+    </div>
+  </div>
+
+</section>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+        <!-- About Section -->
+        <div class="footer-section">
+            <h3><span style="color: #ffd700;">Smart</span>Care</h3>
+            <p>Your trusted companion for a healthier lifestyle. Track your fitness, manage nutrition, and achieve your wellness goals with AI-powered insights.</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="LinkedIn">💼</a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#features">Goals</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/diet">Diet Recommendation</a></li>
+                <li><a href="#bmii">BMI Calculator</a></li>
+                <li><a href="#health-blogs">Health Blogs</a></li>
+            </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-section">
+            <h3>Resources</h3>
+            <ul>
+                <li><a href="#">Workout Plans</a></li>
+                <li><a href="#">Nutrition Guide</a></li>
+                <li><a href="#">Health Tips</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 SmartCare. All rights reserved. | Designed with ❤️ for your health</p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bmi.js') }}"></script>
+</body>
+</html>

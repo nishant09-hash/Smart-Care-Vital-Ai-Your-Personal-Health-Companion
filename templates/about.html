@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SmartCare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common_ui.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+    <!-- Font Awesome CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+</head>
+<body class="page-with-nav">
+        <header class="header">
+            <a href="/" class="logo">
+                <span class="smart">Smart</span><span class="care">Care</span>
+            </a>
+
+            <nav class="navbars">
+                <span id="userWelcome" class="user-welcome"></span>
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+                <a href="/diet">Diet Recommendation</a>
+                <a href="/chatbot">Health Assistant</a>
+                <span id="authButtons"></span>
+            </nav>
+        </header>
+    <h1 class="about">"ABOUT US"</h1>
+    <div class="about-container">
+    <p class="abouttext">Welcome to <span style="color: #d3af37; font-size: 2rem">Smart</span> <span style="color: #a4d850; font-size: 2rem;">Care</span>, your personal health companion. Our mission is to empower individuals to take control of their health through innovative technology and personalized insights. We believe that everyone deserves access to tools that can help them lead healthier, happier lives.
+    At Smart Care, we are dedicated to providing a comprehensive platform that integrates health tracking, goal setting, and AI-powered recommendations. Our team of experts in healthcare, technology, and data science work tirelessly to ensure that our users receive the most accurate and relevant information to support their wellness journey.
+    We are committed to privacy and security, ensuring that your personal health data is protected at all times. Join us on this journey to smarter healthcare and discover how Smart Care can help you achieve your health goals.</p>
+        <div class="aboutimage"></div>
+    </div>
+<br style="color: grey;">
+<section class="Testimonials">
+        <h2 class="testimonials-header">Testimonials</h2>
+        <div class="livecount">
+            <div class="counter-box">
+                <span id="happy-members" class="counter">0</span>+
+                <p>Happy Members</p>
+            </div>
+            <div class="counter-box">
+                <span id="members-joined" class="counter">0</span>+
+                <p>Members Joined</p>
+            </div>
+            <div class="counter-box">
+                <span id="programs" class="counter">0</span>+
+                <p>Programs</p>
+            </div>
+        </div>
+
+        <!-- Updated testimonials: each card has an image on the left and content on the right -->
+        <div class="testimonials-cards">
+            <article class="testimonial-card">
+                <div class="testimonial-image">
+                    <!-- <img src="avatar1.png" alt="Alex P." /> -->
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">“Smart Care has transformed the way I manage my health. The AI‑powered insights are incredibly accurate and have helped me stay on track with my fitness goals.”</p>
+                    <p class="testimonial-author">— Alex P.</p>
+                </div>
+            </article>
+
+            <article class="testimonial-card">
+                <div class="testimonial-image">
+                    <!-- <img src="avatar2.png" alt="Jamie L." /> -->
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">“I love how easy it is to use Smart Care. The personalized recommendations make a huge difference in my daily routine. Highly recommend to anyone looking to improve their health!”</p>
+                    <p class="testimonial-author">— Jamie L.</p>
+                </div>
+            </article>
+
+            <article class="testimonial-card">
+                <div class="testimonial-image">
+                    <!-- <img src="avatar3.png" alt="Taylor R." /> -->
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">“The BMI calculator and diet recommendations have been game‑changers for me. I've lost weight and feel more energetic than ever before. Thank you, Smart Care!”</p>
+                    <p class="testimonial-author">— Taylor R.</p>
+                </div>
+            </article>
+
+            <article class="testimonial-card">
+                <div class="testimonial-image">
+                    <!-- <img src="avatar1.png" alt="Alex P." /> -->
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">“Smart Care has transformed the way I manage my health. The AI‑powered insights are incredibly accurate and have helped me stay on track with my fitness goals.”</p>
+                    <p class="testimonial-author">— Alex P.</p>
+                </div>
+            </article>
+
+            <article class="testimonial-card">
+                <div class="testimonial-image">
+                    <!-- <img src="avatar2.png" alt="Jamie L." /> -->
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">“I love how easy it is to use Smart Care. The personalized recommendations make a huge difference in my daily routine. Highly recommend to anyone looking to improve their health!”</p>
+                    <p class="testimonial-author">— Jamie L.</p>
+                </div>
+            </article>
+
+            <article class="testimonial-card">
+                <!-- <div class="testimonial-image">
+                    <img src="avatar3.png" alt="Taylor R." />
+                </div> -->
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">“The BMI calculator and diet recommendations have been game‑changers for me. I've lost weight and feel more energetic than ever before. Thank you, Smart Care!”</p>
+                    <p class="testimonial-author">— Taylor R.</p>
+                </div>
+            </article>
+        </div>
+
+
+
+        <!-- inline script -->
+     <script>
+        // Function to animate the counter
+        function animateCounter(id, target) {
+            let count = 0;
+            const increment = target / 1500; // Adjust the divisor to change speed
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(interval);
+                }
+                document.getElementById(id).innerText = Math.floor(count);
+            }, 1); // Adjust the interval time to change speed
+        }
+
+        // Start the counters when the page loads
+        window.onload = function() {
+            animateCounter('happy-members', 80);
+            animateCounter('members-joined', 100);
+            animateCounter('programs', 30);
+        };  
+    </script>
+    </section>
+    <!-- ===== Contact Section ===== -->
+<section class="contact-section" id="contact-section">
+  <h2 class="contact-header">Contact Us</h2>
+  <div class="contact-container">
+    <form class="contact-form" action="#" method="post">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+      </div>
+
+      <button type="submit" class="send-btn">Send Message</button>
+            <p id="contact-status" style="margin-top: 12px; color: #a4d850; font-weight: 600;"></p>
+    </form>
+
+    <div class="contact-info">
+      <h3>Get in Touch</h3>
+      <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</p>
+      <p><i class="fas fa-envelope"></i> support@smartcare.com</p>
+      <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+      <div class="contact-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== Footer Section ===== -->
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <span style="color: #d3af37; font-size: 2rem">Smart</span> <span style="color: #a4d850; font-size: 2rem;">Care</span>
+      <p>Your AI-powered health and fitness companion. Stay fit, stay smart!</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/diet">Diet Recommendation</a></li>
+        <li><a href="#contact-section">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <script src="https://kit.fontawesome.com/yourkit.js"></script>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Smart Care. All Rights Reserved.</p>
+  </div>
+</footer>
+<script>
+        document.querySelector('.contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const statusEl = document.getElementById('contact-status');
+            statusEl.style.color = '#a4d850';
+            statusEl.innerText = 'Sending...';
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                if (response.ok) {
+                    statusEl.style.color = '#a4d850';
+                    statusEl.innerText = 'Message sent successfully!';
+                    e.target.reset();
+                } else {
+                    statusEl.style.color = '#ff6b6b';
+                    statusEl.innerText = result.error || 'Failed to send message';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                statusEl.style.color = '#ff6b6b';
+                statusEl.innerText = 'An error occurred while sending the message';
+            }
+        });
+    </script>
+<script src="{{ url_for('static', filename='js/common-nav.js') }}"></script>
+
+</body>
+
+</html>
