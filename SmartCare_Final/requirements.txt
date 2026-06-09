@@ -1,0 +1,6 @@
+Flask==2.3.0
+flask-cors==4.0.0
+Flask-MySQLdb==1.0.1
+Werkzeug==2.3.0
+google-genai
+python-dotenv==1.2.1
