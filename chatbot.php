@@ -5,6 +5,9 @@ declare(strict_types=1);
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/goal-data.php';
 
+const MIN_OPENAI_TIMEOUT_SECONDS = 5;
+const DEFAULT_OPENAI_TIMEOUT_SECONDS = 20;
+
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -57,10 +60,13 @@ curl_setopt_array($ch, [
         ],
         'temperature' => 0.6,
     ]),
-    CURLOPT_TIMEOUT => 20,
+    CURLOPT_TIMEOUT => max(MIN_OPENAI_TIMEOUT_SECONDS, (int) (getenv('OPENAI_TIMEOUT') ?: DEFAULT_OPENAI_TIMEOUT_SECONDS)),
 ]);
 
 $result = curl_exec($ch);
+if ($result === false) {
+    error_log('OpenAI request failed: ' . curl_error($ch));
+}
 $httpCode = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
 curl_close($ch);
 

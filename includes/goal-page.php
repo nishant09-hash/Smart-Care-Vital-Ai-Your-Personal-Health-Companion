@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/goal-data.php';
 
+const MAX_WEEKLY_TARGET_LENGTH = 120;
+const MAX_CHATBOT_MESSAGE_LENGTH = 400;
+
 $catalog = getGoalCatalog();
 $goal = $catalog[$goalSlug] ?? null;
 
@@ -85,7 +88,7 @@ if ($goal === null) {
                 </div>
                 <div class="col-md-6">
                     <label for="weeklyTarget" class="form-label">Weekly Target</label>
-                    <input type="text" class="form-control" id="weeklyTarget" name="weekly_target" maxlength="120" placeholder="e.g. 4 workouts / week" required>
+                    <input type="text" class="form-control" id="weeklyTarget" name="weekly_target" maxlength="<?= MAX_WEEKLY_TARGET_LENGTH ?>" placeholder="e.g. 4 workouts / week" required>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Save Goal</button>
@@ -104,7 +107,7 @@ if ($goal === null) {
             </div>
             <form class="d-flex gap-2" data-chat-form>
                 <input type="hidden" name="goal_slug" value="<?= htmlspecialchars($goalSlug) ?>">
-                <input type="text" class="form-control" name="message" maxlength="400" placeholder="Ask for a workout plan..." required>
+                <input type="text" class="form-control" name="message" maxlength="<?= MAX_CHATBOT_MESSAGE_LENGTH ?>" placeholder="Ask for a workout plan..." required>
                 <button type="submit" class="btn btn-success">Send</button>
             </form>
         </div>

@@ -27,8 +27,17 @@ document.querySelectorAll('[data-chat-form]').forEach((form) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ goal_slug: goalSlug, message }),
             });
-            const data = await response.json();
-            windowNode.appendChild(createMessage(data.reply || 'Unable to fetch response right now.', 'ai'));
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (error) {
+                data = {};
+            }
+
+            const reply = response.ok
+                ? (data.reply || 'Unable to fetch response right now.')
+                : (data.reply || 'AI assistant is temporarily unavailable.');
+            windowNode.appendChild(createMessage(reply, 'ai'));
         } catch (error) {
             windowNode.appendChild(createMessage('Network issue. Please try again.', 'ai'));
         }
@@ -50,8 +59,14 @@ document.querySelectorAll('[data-goal-form]').forEach((form) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             });
-            const data = await response.json();
-            statusNode.textContent = data.message || 'Saved.';
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (error) {
+                data = {};
+            }
+
+            statusNode.textContent = data.message || (response.ok ? 'Saved.' : 'Unable to save right now.');
             statusNode.className = response.ok ? 'ms-2 small text-success' : 'ms-2 small text-danger';
         } catch (error) {
             statusNode.textContent = 'Unable to save right now.';

@@ -5,6 +5,8 @@ declare(strict_types=1);
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/goal-data.php';
 
+const MAX_WEEKLY_TARGET_LENGTH = 120;
+
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -30,11 +32,12 @@ try {
     $stmt->execute([
         ':goal_slug' => $goalSlug,
         ':target_date' => $targetDate,
-        ':weekly_target' => mb_substr($weeklyTarget, 0, 120),
+        ':weekly_target' => mb_substr($weeklyTarget, 0, MAX_WEEKLY_TARGET_LENGTH),
     ]);
 
     echo json_encode(['message' => 'Goal saved successfully.']);
 } catch (Throwable $exception) {
+    error_log('Goal save failed: ' . $exception->getMessage());
     http_response_code(500);
     echo json_encode(['message' => 'Failed to save goal. Check database configuration.']);
 }
