@@ -1,0 +1,24 @@
+.hero-section {
+    background: linear-gradient(135deg, #0d6efd 0%, #198754 100%);
+}
+
+.chat-window {
+    background: #f8f9fa;
+    max-height: 260px;
+    min-height: 180px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.chat-message.user {
+    background: #d1e7dd;
+}
+
+.chat-message.ai {
+    background: #e2e3e5;
+}
